@@ -26,3 +26,22 @@ const counterReducer = (state = initialState, action) => {
       return state;
   }
 }; 
+
+// Create Store
+const store = createStore(counterReducer);
+
+// Scenario 1: Initial State Verification
+console.log('Initial State:', store.getState()); // Should log { count: 0 }
+
+// Scenario 2: Incrementing the Counter
+store.dispatch(add());
+store.dispatch(add());
+console.log('After ADD Actions:', store.getState()); // Should log { count: 2 }
+
+// Scenario 3: Decrementing the Counter
+store.dispatch(subtract());
+console.log('After SUBTRACT Action:', store.getState()); // Should log { count: 1 }
+
+// Scenario 4: Resetting the Counter
+store.dispatch(reset());
+console.log('After RESET Action:', store.getState()); // Should log { count: 0 }
